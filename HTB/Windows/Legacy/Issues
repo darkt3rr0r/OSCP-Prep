@@ -1,0 +1,11 @@
+Pip issue
+
+1. Check pip
+2. pip show impacket
+3. if pip impacket shows python3 path then you have to get a fresh machine. But maybe try next steps first and check on old one)but I doubt)
+
+4. https://pip.pypa.io/en/stable/installing/
+4a. Follow first 2 commands in the above link.
+5. pip install pycryptodome
+
+That's all.

