@@ -1,10 +1,15 @@
 Powershell SMB enable
 
+Made this from the Privelege Escalation course from Tib3rius ⁣
+
+Udemy link of his course:https://www.udemy.com/course/windows-privilege-escalation/
+
+This was for a demo windows 10 machine, I used for practise.
 
 > Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol-Client" -All
 
 ```zsh
-# python3 /usr/share/doc/python3-impacket/examples/smbserver.py tools .
+python3 /usr/share/doc/python3-impacket/examples/smbserver.py tools .
 
 ```
 Generating reverse shell using msfvenom
@@ -24,7 +29,7 @@ To check your privilege on a system
 ```cmd
 whoami /priv
 ```
-##Services Privilege Escalation
+## Services Privilege Escalation
 
 ```cmd
 .\winPEASany.exe quiet servicesinfo
@@ -209,7 +214,7 @@ The hashes are encrypted with a key which can be found in a file called *System*
 SAM and SYSTEM files are located in the following location. They are locked when windows is running
 
 ***
-     C:\Windows\System32\config d
+     C:\Windows\System32\config 
 ***
 
 Backup of these files. 
