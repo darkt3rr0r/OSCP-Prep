@@ -42,12 +42,12 @@ sc qc  daclsvc
 ```
 Using accesschk.exe
 
--u Suppress errors
--v Verbose 
--c Windows service
--d Only process directories or top-level keys
--w Show objects which have right access 
--q Omit banner
+- -u Suppress errors
+- -v Verbose 
+- -c Windows service
+- -d Only process directories or top-level keys
+- -w Show objects which have right access 
+- -q Omit banner
 
 
 ```cmd
