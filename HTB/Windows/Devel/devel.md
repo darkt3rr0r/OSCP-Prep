@@ -1,19 +1,4 @@
 
----
-title: "Hack The Box - Devel"
-author: darkt3rr0r
-date: "2020-05-04"
-subject: "CTF Writeup Template"
-keywords: [HTB, CTF, Hack The Box, Security]
-lang: "en"
-titlepage: true
-titlepage-text-color: "FFFFFF"
-titlepage-color: "0c0d0e"
-titlepage-rule-color: "8ac53e"
-toc: true
-toc-own-page: true
-...
-
 # HackTheBox : Devel
 
 This is a simple Windows box running a Microsoft IIS server. There is an FTP server running which allows annonymous login and a web page is hosted at port 80. The privelege escalation was 
