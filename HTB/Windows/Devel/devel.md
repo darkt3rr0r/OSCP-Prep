@@ -153,6 +153,8 @@ For this to escalate our privileges , we will need to the following things
 - juicy potato to exploit the SeImpersonatePrivilege
 - Place all the files that you want to upload in the same folder and then start the http server
 
+>Download x86 version of Juicy potato from this: https://github.com/ivanitlearning/Juicy-Potato-x86/releases
+
 ```zsh
 python -m SimpleHTTPServer 8000
 ```
