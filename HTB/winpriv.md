@@ -365,7 +365,7 @@ Service accounts can be given special privileges in order for them to run their 
 Unfortunately, multiple problems have been found with service accounts, making them easier to escalate privileges with.
 
 Service accounts could intercept a SYSTEM ticket and use it to impersonate the SYSTEM user.
-This was possible because service accounts usually have the *SeImpersonatePrivilege”* privilege enabled
+This was possible because service accounts usually have the *SeImpersonatePrivilege* privilege enabled
 
 For eg. IIS Runs with the privilegs of a service account , we can get a reverse shell from it
 
