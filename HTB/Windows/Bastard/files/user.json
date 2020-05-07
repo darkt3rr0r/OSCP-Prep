@@ -1,0 +1,36 @@
+{
+    "uid": "1",
+    "name": "admin",
+    "mail": "drupal@hackthebox.gr",
+    "theme": "",
+    "created": "1489920428",
+    "access": "1492102672",
+    "login": 1588849392,
+    "status": "1",
+    "timezone": "Europe\/Athens",
+    "language": "",
+    "picture": null,
+    "init": "drupal@hackthebox.gr",
+    "data": false,
+    "roles": {
+        "2": "authenticated user",
+        "3": "administrator"
+    },
+    "rdf_mapping": {
+        "rdftype": [
+            "sioc:UserAccount"
+        ],
+        "name": {
+            "predicates": [
+                "foaf:name"
+            ]
+        },
+        "homepage": {
+            "predicates": [
+                "foaf:page"
+            ],
+            "type": "rel"
+        }
+    },
+    "pass": "$S$DRYKUR0xDeqClnV5W0dnncafeE.Wi4YytNcBmmCtwOjrcH5FJSaE"
+}
