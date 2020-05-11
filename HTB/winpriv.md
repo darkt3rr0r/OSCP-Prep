@@ -1,5 +1,11 @@
 Powershell SMB enable
 
+Checking file and granting permission
+```cmd
+ICACLS root.txt 
+ICACLS root.txt /grant %username%:F
+```
+
 Made this from the Privelege Escalation course from Tib3rius ⁣
 
 Udemy link of his course:https://www.udemy.com/course/windows-privilege-escalation/
