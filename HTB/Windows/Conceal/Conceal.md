@@ -23,6 +23,13 @@ Service Info: Host: Conceal
 
 
 ```
+nmap -sU -sV -v --top-ports 20 10.10.10.116 
+ike-scan  -M 10.10.10.116 
+ike-scan  --ikev2 10.10.10.116
+```
+Only then you will find snmp ports
+
+```
 snmpwalk -c public -v1 10.10.10.116
 ```
 Important info
@@ -68,6 +75,12 @@ conn conceal
 /etc/ipsec.secret
 ```
 10.14.21 10.10.10.116 : PSK "Dudecake1!"
+```
+Important commands for ipsec
+
+```
+ipsec restart
+ipsec up conceal 
 ```
 **Type=Transport is working, also need rightsubnet and with the protocol mentioned else it doesnot work**
 **decrease mtu size to 1100 to avoid packet loss coz of dual VPNs**
