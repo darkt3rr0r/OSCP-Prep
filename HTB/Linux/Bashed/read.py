@@ -1,0 +1,6 @@
+txt = open("/root/root.txt")
+txt1 = txt.read() 
+txt.close()
+txt = open("test.txt", "w")
+txt.truncate()
+txt.write(txt1)
