@@ -13,7 +13,7 @@ We can do a dirsearch to fuzz the directories.
  python3 dirsearch.py -u http://10.10.10.68 -e r -R 3
  ```
 
-This looks interesiting:
+This looks interesting:
 
 ```
 [02:33:31] 200 -   14B  - /dev/
@@ -62,4 +62,4 @@ cat root
 # (Cron version -- $Id: crontab.c,v 2.13 1994/01/17 03:20:37 vixie Exp $)                   
 * * * * * cd /scripts; for f in *.py; do python "$f"; done
 ```
-Simple !
+Simple !	
