@@ -1,3 +1,5 @@
+# CyberSecLabs : SAM
+
 
 ```zsh
 nmap --script smb-enum-shares -p139,445 -T4 -Pn 172.31.1.18                                                                             [4/6685]
