@@ -4,7 +4,7 @@
 
 Get a service account by exploiting or if you want to do a demo :
 
-**Big Thanks to Tiberius for the awesome WinPriv course. You can checkout his awesome course here. I couldnot have done without his help and it is his setup :*
+**Big Thanks to Tiberius for the awesome WinPriv course. You can checkout his awesome course here. I couldnot have done without his help and it is his setup :**
 https://www.udemy.com/course/windows-privilege-escalation/
 
 
