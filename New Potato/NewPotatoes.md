@@ -1,8 +1,22 @@
 Get a service account by exploiting or if you want to do a demo :
 
-Binaries are in the folder called files
+Big Thanks to Tiberius for the awesome course. You can checkout his awesome course here. I couldnot have done without his help and setup :
+https://www.udemy.com/course/windows-privilege-escalation/
+
+
+Binaries are in the folder called files.
+
+You have to login as the admin and then spawn a shell using the following command which can mimic the service account you get when you exploit a service to obtain a shell.
+
+```cmd
+C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
+```
 
 https://tryhackme.com/room/windows10privesc
+
+rdp creds
+user:password321
+admin:password123
 
 --------------------------------------------------
 
