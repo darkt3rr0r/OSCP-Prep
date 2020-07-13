@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+
+<title> HTB Hairdresser </title>
+
+<center> <br><br><br><br>
+<img src="bounce.jpg" height="750" width="1200" alt="" />
+<center>
