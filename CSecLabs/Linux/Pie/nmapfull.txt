@@ -1,0 +1,11 @@
+# Nmap 7.80 scan initiated Fri Jul 24 00:39:36 2020 as: nmap -sS -p- -r -v -T4 -Pn -o nmapfull.txt 172.31.1.26
+Nmap scan report for 172.31.1.26
+Host is up (0.17s latency).
+Not shown: 65532 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+53/tcp open  domain
+80/tcp open  http
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Fri Jul 24 00:45:34 2020 -- 1 IP address (1 host up) scanned in 358.59 seconds

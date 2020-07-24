@@ -1,0 +1,21 @@
+# Nmap 7.80 scan initiated Fri Jul 17 01:27:48 2020 as: nmap -sC -sV -p 22,80,9000 -v -o servicescan.txt 172.31.3.7
+Nmap scan report for 172.31.3.7
+Host is up (0.19s latency).
+
+PORT     STATE    SERVICE    VERSION
+22/tcp   open     ssh        OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 34:5c:51:eb:90:a2:79:74:42:3b:af:8b:64:66:2f:a2 (RSA)
+|   256 d5:76:0c:92:ef:e1:83:9e:37:63:46:00:eb:9d:7b:05 (ECDSA)
+|_  256 cd:4f:f8:48:9a:c7:38:85:a2:05:9c:3b:44:20:01:8c (ED25519)
+80/tcp   open     http       Apache httpd 2.4.29 ((Ubuntu))
+| http-methods: 
+|_  Supported Methods: GET HEAD OPTIONS
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: River - Index
+9000/tcp filtered cslistener
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jul 17 01:28:03 2020 -- 1 IP address (1 host up) scanned in 15.31 seconds

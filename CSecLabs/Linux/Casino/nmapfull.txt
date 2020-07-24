@@ -1,0 +1,11 @@
+# Nmap 7.80 scan initiated Fri Jul 17 01:18:05 2020 as: nmap -sS -p- -r -v -T4 -Pn -o nmapfull.txt 172.31.3.7
+Nmap scan report for 172.31.3.7
+Host is up (0.17s latency).
+Not shown: 65532 closed ports
+PORT     STATE    SERVICE
+22/tcp   open     ssh
+80/tcp   open     http
+9000/tcp filtered cslistener
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Fri Jul 17 01:26:15 2020 -- 1 IP address (1 host up) scanned in 490.22 seconds

