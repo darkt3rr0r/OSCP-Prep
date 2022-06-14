@@ -78,4 +78,4 @@ PrintSpoofer.exe -i -c rev.exe
 ![PrintSpoofer.exe](./files/printspoofer.png)
 
 
-<script src="https://asciinema.org/a/14.js" id="asciicast-14" async data-autoplay="true" data-size="big"></script>
+[![asciicast](https://asciinema.org/a/H1qKho9airrx6AKeUhv0VFPOn.svg)](https://asciinema.org/a/H1qKho9airrx6AKeUhv0VFPOn)
