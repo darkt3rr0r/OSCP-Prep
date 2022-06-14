@@ -78,4 +78,4 @@ PrintSpoofer.exe -i -c rev.exe
 ![PrintSpoofer.exe](./files/printspoofer.png)
 
 
-[![asciicast](https://asciinema.org/a/H1qKho9airrx6AKeUhv0VFPOn.svg)](https://asciinema.org/a/H1qKho9airrx6AKeUhv0VFPOn)
+<a href="https://asciinema.org/a/H1qKho9airrx6AKeUhv0VFPOn" target="_blank"><img src="https://asciinema.org/a/H1qKho9airrx6AKeUhv0VFPOn.svg" /></a>
