@@ -6,7 +6,7 @@
     "dependencies": {
         "express": "4.15.x",
         "express-session": "1.15.x",
-        "body-parser": "1.17.x",
+        "body-parser": "1.20.x",
         "mongodb": "2.2.x"
     }
 }
